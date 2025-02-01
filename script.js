@@ -2,7 +2,7 @@ const cardContainer = document.getElementById("card-container");
 
 const apiKey = "e63ecdefd05d4e1d8f1a3326a192ee71";
 const api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71";
-const api2 = "https://newsapi.org/v2/top-headlines?country=us&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71"
+const api2 = "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71"
 let page = 1;
 const pageSize = 8;
 
