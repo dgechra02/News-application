@@ -2,9 +2,11 @@ const cardContainer = document.getElementById("card-container");
 
 const apiKey = "e63ecdefd05d4e1d8f1a3326a192ee71";
 const api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71";
-const api2 = "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71"
+const api2 = "https://newsapi.org/v2/top-headlines?country=us&apiKey=e63ecdefd05d4e1d8f1a3326a192ee71";
+const api3 = "https://news-application-6wijah9wg-rajendra-echras-projects.vercel.app/api/fetchNews"; // same api as api2 but after using serverless function
+const api4 = "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=ae24c4b88de5d8eb4f1aedae6c5a2136" // api of gnews
 let page = 1;
-const pageSize = 8;
+const pageSize = 6;
 
 let isFetching = false;
 async function fechingNews() {
@@ -17,14 +19,23 @@ async function fechingNews() {
             `${api2}&page=${page}&pageSize=${pageSize}`
         );
 
+        console.log("reponse: ", response);
+
         const jsonResponse = await response.json()
+        console.log("jsonResponse: ", jsonResponse);
 
         const articles = jsonResponse.articles;
+        console.log("articles: ", articles);
+
+
 
         if (articles && articles.length > 0) {
             renderNews(articles);
             page++;
-        }else {
+        }
+        
+        
+        else {
             if(page === 1){
                 cardContainer.innerHTML = `<p>No news found. Please try again later.</p>`
             }else {
